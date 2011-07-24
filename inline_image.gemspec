@@ -7,7 +7,7 @@ Gem::Specification.new do |s|
   s.version     = InlineImage::VERSION
   s.authors     = ["Yann Mainier"]
   s.email       = ["yann.mainier@gmail.com"]
-  s.homepage    = ""
+  s.homepage    = "https://github.com/ymainier/inline_image"
   s.summary     = %q{Inline images within css and html files using data URI}
   s.description = %q{Inline image parses css and html files to replace small file by a data URI reprentation in base64.}
 

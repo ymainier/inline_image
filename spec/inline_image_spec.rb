@@ -37,6 +37,10 @@ describe InlineImage do
     InlineImage.process("spec/fixtures", "images/small.png").should eq(SMALL_PNG_DATA_URI)
   end
 
+  it "change default max size and encodes small images" do
+    InlineImage.process("spec/fixtures", "images/small.png", 1025).should eq(SMALL_PNG_DATA_URI)
+  end
+
   it "does not modify large image" do
     InlineImage.process("spec/fixtures", "images/large.png").should eq("images/large.png")
   end
@@ -46,8 +50,16 @@ describe InlineImage do
       InlineImage.replace_in_css(SMALL_PNG_IN_CSS_BEFORE, "spec/fixtures").should eq(SMALL_PNG_IN_CSS_AFTER)
     end
 
+    it "modify max size and replace small images in css" do
+      InlineImage.replace_in_css(SMALL_PNG_IN_CSS_BEFORE, "spec/fixtures", 1025).should eq(SMALL_PNG_IN_CSS_AFTER)
+    end
+
     it "does not modify large image in css" do
       InlineImage.replace_in_css(LARGE_PNG_IN_CSS, "spec/fixtures").should eq(LARGE_PNG_IN_CSS)
+    end
+
+    it "modify max size and does not modify large image in css" do
+      InlineImage.replace_in_css(LARGE_PNG_IN_CSS, "spec/fixtures", 1025).should eq(LARGE_PNG_IN_CSS)
     end
   end
 
@@ -58,6 +70,14 @@ describe InlineImage do
 
     it "does not modify large image in html" do
       InlineImage.replace_in_html(LARGE_PNG_IN_HTML, "spec/fixtures").should eq(LARGE_PNG_IN_HTML)
+    end
+
+    it "modify max size and replace small images in html" do
+      InlineImage.replace_in_html(SMALL_PNG_IN_HTML_BEFORE, "spec/fixtures", 1025).should eq(SMALL_PNG_IN_HTML_AFTER)
+    end
+
+    it "modify max size and does not modify large image in html" do
+      InlineImage.replace_in_html(LARGE_PNG_IN_HTML, "spec/fixtures", 1025).should eq(LARGE_PNG_IN_HTML)
     end
   end
 end

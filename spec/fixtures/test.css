@@ -1,5 +1,5 @@
 .with-small {
-  background: white url(images/small.png) no-repeat center;
+  background: white url(images/small.png)
 }
 .with-large {
   background: white url(images/large.png)

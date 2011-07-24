@@ -13,9 +13,21 @@ Installation
 
 Usage and documentation
 -----------------------
-    inline_image inline /path/to/your.css # search for url(img/name.png)
-    inline_image inline /path/to/your.html # search for src="img/name.png"
-    inline_image help inline # Brief usage description
+Brief usage description
+    inline_image help inline
+
+Replace all image in a css file appearing in `url(img/name.png)` (max size 1024B)
+
+    inline_image inline /path/to/your.css
+
+Replace all image in an html file appearing in `url(img/name.png)` (max size 1024B)
+
+    inline_image inline /path/to/your.html
+
+Replace all image in a file with max size 2048B
+
+    inline_image inline /path/to/your_file --size=2048
+    inline_image inline /path/to/your_file -s 2048
 
 Todo
 ----

@@ -27,13 +27,13 @@ module InlineImage
 
   def self.replace_in_css(css_text, base_dir = '.', max_file_size = MAX_FILE_SIZE)
     css_text.gsub(/url\(['"]?([^'"\)]+)['"]?\)/m) do |match| 
-      "url(#{process base_dir, $1, max_file_size})"
+      "url(#{process(base_dir, $1, max_file_size)})"
     end
   end
 
   def self.replace_in_html(html_text, base_dir = '.', max_file_size = MAX_FILE_SIZE)
     html_text.gsub(/src=['"]([^'"\)]+)['"]/m) do |match| 
-      "src=\"#{process base_dir, $1, max_file_size}\""
+      "src=\"#{process(base_dir, $1, max_file_size)}\""
     end
   end
 
