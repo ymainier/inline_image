@@ -1,0 +1,31 @@
+#!/usr/bin/env ruby
+require "rubygems"
+require "thor"
+require "inline_image"
+
+class InlineImg < Thor
+  desc "inline FILENAME", "Inline images contained in FILENAME. FILENAME must be a css or html file. Extension is used to determine if it is either a css or a html file"
+  def inline(filename) 
+    return false unless File.exist? filename
+
+    FileUtils.cp filename, "#{filename}.bak"
+
+    dir = File.dirname(filename)
+    extension = filename.split('.').last
+
+    File.open(filename, File::RDWR) do |file|
+      content = if extension == "css" then 
+                  InlineImage.replace_in_css file.read, dir
+                else 
+                  InlineImage.replace_in_html file.read, dir
+                end
+      file.rewind
+      file.truncate(0)
+      file.write content
+    end
+
+  end
+
+end
+
+InlineImg.start
