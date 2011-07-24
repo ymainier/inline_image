@@ -14,6 +14,7 @@ Installation
 Usage and documentation
 -----------------------
 Brief usage description
+
     inline_image help inline
 
 Replace all image in a css file appearing in `url(img/name.png)` (max size 1024B)
