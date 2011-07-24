@@ -29,10 +29,6 @@ Replace all image in a file with max size 2048B
     inline_image inline /path/to/your_file --size=2048
     inline_image inline /path/to/your_file -s 2048
 
-Todo
-----
-Add option to specify how small the file must be transformed
-
 License
 -------
 Released under The Unlicense, aka public domain. See the [LICENSE][license] file for further details.
