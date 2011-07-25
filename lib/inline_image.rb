@@ -40,7 +40,7 @@ module InlineImage
   def self.process(base_dir, name_in_file, max_file_size = MAX_FILE_SIZE)
     image_filename = "#{base_dir}/#{name_in_file}"
     extension = name_in_file.split('.').last
-    if File.size(image_filename) <= max_file_size then
+    if File.exist?(image_filename) and File.size(image_filename) <= max_file_size then
       File.open(image_filename) do |img|
         base64encoded = Base64.encode64(img.read).gsub("\n", "")
         "data:image/#{extension};base64,#{base64encoded}"

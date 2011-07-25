@@ -45,6 +45,10 @@ describe InlineImage do
     InlineImage.process("spec/fixtures", "images/large.png").should eq("images/large.png")
   end
 
+  it 'does not modify non-existent file' do
+    InlineImage.process('non/existant/path', 'non-existant-file').should eq('non-existant-file')
+  end
+
   context "when processing css" do
     it "replace small images in css" do
       InlineImage.replace_in_css(SMALL_PNG_IN_CSS_BEFORE, "spec/fixtures").should eq(SMALL_PNG_IN_CSS_AFTER)
